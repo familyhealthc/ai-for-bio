@@ -1,0 +1,15 @@
+Asset: hero-cells.jpg
+Title: HeLa cells
+Creator: Kevin Mackenzie, University of Aberdeen
+Source collection: Wellcome Collection
+Source record: https://wellcomecollection.org/works/f8f4u9fm
+Image download: https://iiif.wellcomecollection.org/image/B0008365/full/1600,/0/default.jpg
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+License URL: https://creativecommons.org/licenses/by/4.0/
+License verification: Source record explicitly permits reuse for any purpose, including commercial use, with attribution to original work, source and licence.
+Description: Confocal micrograph of fluorescently labelled HeLa cells. Nuclei are labelled in blue, tubulin in green and actin fibres in red.
+Downloaded dimensions: 1600 x 1199 pixels
+Downloaded on: 2026-11-16
+Changes to downloaded image file: none. The IIIF download is resized from the collection's full-size image.
+Suggested web credit: HeLa cells · Kevin Mackenzie / University of Aberdeen · Wellcome Collection · CC BY 4.0. 显微图像用于研究愿景展示，非家家健康研究成果。
+If additional cropping or colour treatment is applied in the site, identify that treatment in the image credit.
