@@ -11,6 +11,10 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <script src="content.js" defer></script>
+  <script src="extended-content.js" defer></script>
+  <script src="atlas-core.js" defer></script>
+  <script src="atlas-questions.js" defer></script>
+  <script src="atlas-institutions.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -21,11 +25,11 @@
       <span><strong>Family Health<span class="brand-dot">.</span></strong><small>AI FOR BIO</small></span>
     </a>
     <nav class="desktop-nav" aria-label="主导航">
-      <a href="#mission">研究愿景</a><a href="#questions">开放问题</a><a href="#journal">前沿观察</a><a href="#network">能力网络</a>
+      <a href="atlas.html">研究图谱</a><a href="#questions">开放问题</a><a href="#journal">前沿观察</a><a href="#services">研究合作</a><a href="#network">能力网络</a>
     </nav>
     <a class="header-cta" href="#collaborate">参与共建 <span aria-hidden="true">↗</span></a>
     <button class="menu-toggle" aria-label="打开导航" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="移动端导航" hidden><a href="#mission">研究愿景</a><a href="#questions">开放问题</a><a href="#journal">前沿观察</a><a href="#network">能力网络</a><a href="#collaborate">参与共建 ↗</a></nav>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="移动端导航" hidden><a href="atlas.html">研究图谱</a><a href="#questions">开放问题</a><a href="#journal">前沿观察</a><a href="#services">研究合作</a><a href="#network">能力网络</a><a href="#collaborate">参与共建 ↗</a></nav>
   </header>
 
   <main id="main">
@@ -36,7 +40,7 @@
         <div class="hero-brand hero-enter">Family Health</div>
         <h1 id="hero-title" class="hero-enter">让生命科学的突破，<br>更快发生<span class="accent">。</span></h1>
         <p class="hero-enter">用 AI 扩展理解生命的能力。<br>连接科学问题、研究者与真实验证。</p>
-        <div class="hero-actions hero-enter"><a class="button button-dark" href="#questions">探索开放问题 <span aria-hidden="true">↗</span></a><a class="text-link" href="#mission">我们的研究愿景 <span aria-hidden="true">→</span></a></div>
+        <div class="hero-actions hero-enter"><a class="button button-dark" href="atlas.html">打开研究图谱 <span aria-hidden="true">↗</span></a><a class="text-link" href="#mission">我们的研究愿景 <span aria-hidden="true">→</span></a></div>
         <div class="hero-note hero-enter"><span>HANGZHOU · XIAOSHAN</span><span>筹备中的研究计划</span></div>
       </div>
       <div class="hero-image-caption"><span class="caption-cross" aria-hidden="true">＋</span><span>看向微观，思考生命的未来。<br><small id="hero-credit">显微影像 · 视觉参考</small></span></div>
@@ -45,8 +49,8 @@
 
     <section class="mission section-pad" id="mission" aria-labelledby="mission-title">
       <div class="section-label reveal"><span>01 / OUR PURPOSE</span><span>从理解生命，到改善生命</span></div>
-      <div class="mission-intro reveal"><h2 id="mission-title">一份长期的研究议程。<br>从值得回答的<span class="serif-accent">问题</span>出发。</h2><div><p>我们希望理解疾病如何发生，寻找更好的治疗，使受损组织恢复功能，让更多人拥有更长的健康生命。</p><p class="muted">从杭州萧山起步，以开放合作连接更广的科学力量。研究方向保持远景，每项工作回到证据。</p><button class="text-link" data-open-manifesto>阅读研究宣言 <span aria-hidden="true">↗</span></button></div></div>
-      <div class="directions reveal"><div class="direction-list" role="tablist" aria-label="五大研究方向" aria-orientation="vertical">
+      <div class="mission-intro reveal"><h2 id="mission-title">一份长期的研究议程。<br>从值得回答的<span class="serif-accent">问题</span>出发。</h2><div><p>我们希望理解疾病如何发生，寻找更好的治疗，使受损组织恢复功能，让更多人拥有更长的健康生命。</p><p class="muted">从杭州萧山起步，以开放合作连接更广的科学力量。五个主题保持远景，且允许彼此交叉。具体学科、疾病与技术，在多维图谱中继续展开。</p><button class="text-link" data-open-manifesto>阅读研究宣言 <span aria-hidden="true">↗</span></button></div></div>
+      <div class="directions reveal"><div class="direction-list" role="tablist" aria-label="五个长期使命主题" aria-orientation="vertical">
         <button class="direction-tab active" id="direction-tab-0" role="tab" aria-selected="true" aria-controls="direction-panel" data-direction="0"><span>01</span>基础生物学 <span class="direction-arrow">↗</span></button>
         <button class="direction-tab" id="direction-tab-1" role="tab" aria-selected="false" aria-controls="direction-panel" tabindex="-1" data-direction="1"><span>02</span>疾病机制 <span class="direction-arrow">↗</span></button>
         <button class="direction-tab" id="direction-tab-2" role="tab" aria-selected="false" aria-controls="direction-panel" tabindex="-1" data-direction="2"><span>03</span>治疗发现 <span class="direction-arrow">↗</span></button>
@@ -55,42 +59,63 @@
       </div><div class="direction-panel" id="direction-panel" role="tabpanel" aria-labelledby="direction-tab-0" tabindex="0"><div class="cell-diagram" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><span>THE LIVING SYSTEM</span></div><div class="direction-copy"><span class="mono" id="direction-en">FUNDAMENTAL BIOLOGY</span><h3 id="direction-title">生命如何组织自己？</h3><p id="direction-description">探索细胞状态、基因调控与生命系统的基本规律，为理解疾病与功能修复建立基础。</p></div></div></div>
     </section>
 
+    <section class="atlas-preview section-pad" aria-labelledby="atlas-preview-title">
+      <div class="section-label reveal"><span>02 / RESEARCH ATLAS</span><span>使命有远景，问题有路径</span></div>
+      <div class="section-heading reveal"><h2 id="atlas-preview-title">一张可以继续追问的<br>研究与合作图谱。</h2><div><p>五个使命主题不是全部学科。用六条分类轴连接生命机制、疾病、健康目标、技术方法、研发阶段与协作角色。</p><a class="text-link" href="atlas.html">进入交互图谱 ↗</a></div></div>
+      <div class="atlas-home-flow reveal"><div><span>01</span><h3>具体问题</h3><p>为什么重要，当前卡在哪里</p></div><div><span>02</span><h3>证据与边界</h3><p>已知什么，还需要核查什么</p></div><div><span>03</span><h3>能力与机构</h3><p>需要谁，匹配依据是什么</p></div><div><span>04</span><h3>首轮任务</h3><p>交付什么，怎样决定下一步</p></div></div>
+      <div class="atlas-home-bottom reveal"><p id="atlas-home-count"></p><a class="button button-dark" href="atlas.html">查看完整起步目录 <span>↗</span></a></div>
+    </section>
+
     <section class="questions section-pad" id="questions" aria-labelledby="questions-title">
-      <div class="section-label reveal"><span>02 / OPEN QUESTIONS</span><span>重要、未解、值得一起推进</span></div>
+      <div class="section-label reveal"><span>03 / OPEN QUESTIONS</span><span>重要、未解、值得一起推进</span></div>
       <div class="section-heading reveal"><h2 id="questions-title">我们想推进的<br>下一步。</h2><div><p>把宏大的目标，转化为可以检验的问题。<br>邀请科学判断、计算能力与实验经验。</p><span class="small-note">以下为拟议议题，尚未正式立项。</span></div></div>
       <div id="question-list" class="question-list"></div>
-      <a class="question-footer" href="#collaborate" data-intent="question"><span>有更值得研究的问题？</span><span>带着你的问题加入 <b aria-hidden="true">↗</b></span></a>
+      <a class="question-footer" href="atlas.html"><span>这里展示三个起步议题，完整目录还有更多。</span><span>查看全部研究问题 <b aria-hidden="true">↗</b></span></a>
     </section>
 
     <section class="journal section-pad" id="journal" aria-labelledby="journal-title">
-      <div class="section-label reveal"><span>03 / FIELD NOTES</span><span>研究进展 · 证据边界 · 下一步</span></div>
+      <div class="section-label reveal"><span>04 / FIELD NOTES</span><span>研究进展 · 证据边界 · 下一步</span></div>
       <div class="section-heading compact reveal"><h2 id="journal-title">前沿观察<span class="accent">。</span></h2><p>读懂一项进展，也看清它还没有回答什么。</p></div>
       <div class="filter-bar reveal"><div class="filter-buttons" role="group" aria-label="筛选研究进展"><button class="filter active" data-paper-filter="all" aria-pressed="true">全部</button><button class="filter" data-paper-filter="ai" aria-pressed="false">AI 与生物</button><button class="filter" data-paper-filter="therapy" aria-pressed="false">治疗发现</button><button class="filter" data-paper-filter="repair" aria-pressed="false">修复与寿命</button></div><span class="mono journal-date">资料整理 / 2026.11</span></div>
-      <div id="paper-list" class="paper-list" aria-live="polite"></div>
+      <label class="paper-search"><span>检索研究观察</span><input id="paper-search" type="search" placeholder="搜索论文、主题或证据阶段" autocomplete="off"></label><div id="paper-list" class="paper-list" aria-live="polite"></div>
       <div class="journal-footnote">原始研究与编辑解读分开呈现。这里介绍外部研究，不代表家家健康已取得相关成果。</div>
     </section>
 
+    <section class="services section-pad" id="services" aria-labelledby="services-title">
+      <div class="section-label reveal"><span>05 / WORK TOGETHER</span><span>从一项明确的工作开始</span></div>
+      <div class="section-heading reveal"><h2 id="services-title">把合作，落到具体任务。</h2><div><p>面向研究团队与有研发需求的企业，共同确认问题、投入和可检查的交付。</p><span class="small-note">以下为首期拟探索方向，实际承接范围与条件需共同评议。</span></div></div>
+      <div id="service-list"></div>
+      <div class="participation-grid reveal"><div><h3>研究者与实验团队</h3><p>提出重要问题，参与科学复核、方法或实验工作；共同约定经费、发表和成果安排。</p></div><div><h3>企业与技术团队</h3><p>带来真实研发需求，获得可检查的分析、工具或验证交付，减少下一步决策的不确定性。</p></div><div><h3>愿意长期支持的人</h3><p>支持有明确问题与评审机制的研究，了解资金用途、阶段结果，以及为什么继续或转向。</p></div></div>
+    </section>
+
     <section class="approach section-pad" id="approach" aria-labelledby="approach-title">
-      <div class="section-label reveal"><span>04 / HOW WE WORK</span><span>每一步，都留下可检查的依据</span></div>
+      <div class="section-label reveal"><span>06 / HOW WE WORK</span><span>每一步，都留下可检查的依据</span></div>
       <div class="approach-heading reveal"><h2 id="approach-title">让问题与能力相遇，<br>让想法接受验证。</h2><p>以小而专注的核心，连接计算与实验团队。<br>让每一次工作，为下一轮研究留下基础。</p></div>
       <div class="process reveal"><div><span class="process-num">01</span><h3>提出问题</h3><p>梳理原始证据，寻找值得推进的研究缺口。</p></div><div><span class="process-num">02</span><h3>组织研究</h3><p>共同审定方法，明确团队、投入与成果安排。</p></div><div><span class="process-num">03</span><h3>真实验证</h3><p>运行分析，检验关键判断，记录结果与局限。</p></div><div><span class="process-num">04</span><h3>持续积累</h3><p>保留可复用的工具和知识，决定下一步投入。</p></div></div>
     </section>
 
     <section class="network section-pad" id="network" aria-labelledby="network-title">
-      <div class="section-label reveal"><span>05 / CAPABILITY MAP</span><span>从萧山出发，向更广的科学网络连接</span></div>
+      <div class="section-label reveal"><span>07 / CAPABILITY MAP</span><span>从萧山出发，向更广的科学网络连接</span></div>
       <div class="section-heading compact reveal"><h2 id="network-title">能力在这里连接。</h2><p>寻找互补的研究能力，围绕具体问题展开交流。</p></div>
       <div class="network-notice reveal"><span class="outline-dot"></span><p><strong>公开资源地图 · 待接洽</strong>以下机构仅作为公开能力参考；尚未确认入驻、合作或背书。</p></div>
       <div class="filter-bar reveal"><div class="filter-buttons" role="group" aria-label="筛选能力网络"><button class="filter active" data-network-filter="all" aria-pressed="true">全部</button><button class="filter" data-network-filter="hangzhou" aria-pressed="false">杭州 · 萧山</button><button class="filter" data-network-filter="hongkong" aria-pressed="false">香港</button><button class="filter" data-network-filter="mainland" aria-pressed="false">其他内地</button></div><span id="network-count" class="mono"></span></div>
       <div class="network-table-heading"><span>研究机构 / 团队</span><span>可探索的能力</span><span>公开资料</span></div><div id="network-list" class="network-list" aria-live="polite"></div>
     </section>
 
+    <section class="about section-pad" id="about" aria-labelledby="about-title">
+      <div class="section-label reveal"><span>08 / OUR STARTING POINT</span><span>从杭州萧山起步</span></div>
+      <div class="mission-intro reveal"><h2 id="about-title">家家健康的下一步，<br>走向真实的研发能力。</h2><div><p>本计划由家家健康发起筹备，拟从AI研究与工程、证据评议及具体合作任务开始，逐步建立能够持续提出问题、执行研究并积累技术的团队。</p><p class="muted">现有健康产业联系是起步条件。每项研究的科学负责人、数据、实验条件与经费，仍需逐一落实。</p><a class="text-link" href="https://xsrb.xsnet.cn/resfile/2025-10-16/01/xsrb2025101601.pdf" target="_blank" rel="noopener noreferrer">公开背景：2025年健康产业大会报道 ↗</a></div></div>
+      <div class="plan-roadmap reveal"><div><span class="mono">首先 / 证据与样例</span><h3>建立可检查的起点</h3><p>选择重要问题，核查原始研究，形成实际运行的分析样例与科学复核。</p></div><div><span class="mono">随后 / 具体合作</span><h3>完成有责任人的任务</h3><p>共同约定范围、投入、交付和权利，按结果判断工作是否值得继续。</p></div><div><span class="mono">持续 / 自主研究</span><h3>留下下一轮的能力</h3><p>积累可复用的方法、工具和合作关系，按条件发起更长期的研究计划。</p></div></div>
+      <div class="faq-list reveal"><h3>参与前，你可能关心</h3><details><summary>这五个使命主题是否涵盖了所有方向？</summary><p>它们不是完整或互斥的学科分类。图谱另设机制、疾病、健康目标、方法、阶段和角色六条轴，收录早筛诊断、免疫代谢、精神健康、罕见病、感染防御等问题；未覆盖的条目明确标为待补。</p></details><details><summary>地图里的机构已经加入了吗？</summary><p>尚未确认。它们是基于官方公开资料整理的能力候选。标签匹配不代表实验资源可使用、对方愿意合作或机构为本计划背书。每个节点都保留来源和能力边界。</p></details><details><summary>现阶段有哪些已经完成的研究成果？</summary><p>当前公开的是研究议程、外部研究观察和拟议任务，不宣称已有家家健康完成的科学突破。后续实际运行的分析、验证结果和未解决问题，会按真实状态记录。</p></details><details><summary>合作如何约定费用、发表和成果使用？</summary><p>以具体工作为单位共同确定任务、负责人、预算、交付和验收，并约定数据、代码、背景知识产权、新成果及发表。页面没有默认的固定价格或统一成果归属。</p></details><details><summary>可以直接在这里提交病历或申请治疗吗？</summary><p>本网站用于研究与合作交流，不提供诊断、处方或治疗申请。请勿填写患者身份、病历或未获准分享的数据。涉及人的研究需要另行确认相应伦理、机构与数据使用条件。</p></details></div>
+    </section>
+
     <section class="collaborate section-pad" id="collaborate" aria-labelledby="collaborate-title">
-      <div class="section-label reveal"><span>06 / BUILD WITH US</span><span>研究始于一个问题，也始于一次连接</span></div>
+      <div class="section-label reveal"><span>09 / BUILD WITH US</span><span>研究始于一个问题，也始于一次连接</span></div>
       <div class="collaborate-layout"><div class="reveal"><span class="collaborate-kicker">FOR A HEALTHIER FUTURE</span><h2 id="collaborate-title">生命的下一种可能，<br>值得一起探索。</h2><p>带来一个研究问题、一项技术能力，<br>或一个愿意共同推进的计划。</p><div class="collaboration-types"><button data-join="research">科研合作 <span>↗</span></button><button data-join="technical">技术需求 <span>↗</span></button><button data-join="support">共同支持 <span>↗</span></button></div></div><div class="intent-panel reveal"><span class="mono">START A CONVERSATION</span><h3>从你的想法开始。</h3><p>选择参与方式，生成一份合作意向，<br>把问题、能力与下一步写清楚。</p><button class="button button-dark" id="open-intent">准备合作意向 <span aria-hidden="true">↗</span></button><p class="small-note">筹备版：意向可保存在本机并导出。<br>正式接收渠道尚未公布，当前不会发送给团队。</p></div></div>
     </section>
   </main>
 
-  <footer class="site-footer section-pad"><div class="footer-main"><a class="footer-brand" href="#top">Family Health<span>.</span><small>AI FOR BIO · 家家健康</small></a><p>理解生命，探索改变。<br><span>杭州 · 萧山 / 面向开放合作</span></p><a class="back-top" href="#top">回到顶部 ↑</a></div><div class="footer-bottom"><span>© <span id="year">2026</span> Family Health · AI for Bio 筹备计划</span><div><button data-open-sources>资料来源</button><button data-open-privacy>隐私与使用说明</button><span>筹备版 v0.1</span></div></div></footer>
+  <footer class="site-footer section-pad"><div class="footer-main"><a class="footer-brand" href="#top">Family Health<span>.</span><small>AI FOR BIO · 家家健康</small></a><p>理解生命，探索改变。<br><span>杭州 · 萧山 / 面向开放合作</span></p><a class="back-top" href="#top">回到顶部 ↑</a></div><div class="footer-bottom"><span>© <span id="year">2026</span> Family Health · AI for Bio 筹备计划</span><div><button data-open-sources>资料来源</button><button data-open-privacy>隐私与使用说明</button><span>筹备版 v0.2</span></div></div></footer>
 
   <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-title"><div class="dialog-top"><span class="mono" id="detail-label"></span><button class="close-dialog" aria-label="关闭详情">×</button></div><div id="detail-body"></div></dialog>
   <dialog id="intent-dialog" class="intent-dialog" aria-labelledby="intent-title"><div class="dialog-top"><span class="mono">LET’S BEGIN</span><button class="close-dialog" aria-label="关闭合作意向">×</button></div><h2 id="intent-title">把想法，变成下一步。</h2><p class="dialog-intro">生成合作意向草稿。内容仅留在你的浏览器，尚未发送给家家健康。</p><form id="intent-form"><div class="form-grid"><label>你的称呼 <span>*</span><input name="name" autocomplete="name" required maxlength="80" placeholder="怎么称呼你"></label><label>机构 / 团队<input name="organization" autocomplete="organization" maxlength="120" placeholder="选填"></label></div><label>参与方式 <span>*</span><select name="type" required><option value="research">科研合作 · 共同推进研究</option><option value="technical">技术需求 · 寻找研究与工程支持</option><option value="support">共同支持 · 提供资金或资源</option><option value="question">提出问题 · 贡献线索与证据</option></select></label><label>希望讨论的内容 <span>*</span><textarea name="message" required minlength="10" maxlength="3000" rows="5" placeholder="你关心什么问题？已有怎样的工作或能力？希望下一步一起做什么？（至少10字）"></textarea></label><label>联系方式<input name="contact" autocomplete="email" maxlength="160" placeholder="选填，方便在导出材料中联系你"></label><label class="consent"><input name="understood" type="checkbox" required><span>我知道这是本机草稿，保存或导出不会向团队发送材料。请勿填写病历、患者身份信息或未获准分享的资料。</span></label><div class="form-actions"><button class="button button-dark" type="submit">保存本机草稿 <span>→</span></button><button class="button button-outline" type="button" id="export-intent">下载合作意向</button></div><div class="form-secondary"><button type="button" id="copy-intent">复制意向文本</button><button type="button" id="clear-intent">清除本机草稿</button></div><p id="form-feedback" role="status" aria-live="polite"></p></form></dialog>

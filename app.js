@@ -1,6 +1,10 @@
 (() => {
   'use strict';
   const data = window.BIO_CONTENT;
+  if (window.ATLAS_INSTITUTIONS) {
+    const order = {hangzhou:0,hongkong:1,mainland:2};
+    data.network = window.ATLAS_INSTITUTIONS.map(i => ({...i,capability:i.capabilities.map(t=>window.BIO_ATLAS_META.capabilities[t]).filter(Boolean).join('、')})).sort((a,b)=>order[a.region]-order[b.region]);
+  }
   const $ = (s, root = document) => root.querySelector(s);
   const $$ = (s, root = document) => [...root.querySelectorAll(s)];
   const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -11,6 +15,8 @@
   let lastFocus = null;
   let networkFilter = 'all';
   let networkExpanded = false;
+  let paperFilter = 'all';
+  let paperSearch = '';
   let toastTimer;
 
   function showToast(text) {
@@ -105,15 +111,17 @@
     }
     return top + '<rect width="360" height="210" fill="#e6e8d8"/>' + cells + bottom;
   }
-  function renderPapers(filter = 'all') {
-    const papers = data.papers.filter(p => filter === 'all' || p.filter === filter);
-    $('#paper-list').innerHTML = papers.map(p => `<article class="paper"><div class="paper-visual">${illustration(p.visual)}<span class="paper-visual-label">CONCEPTUAL ILLUSTRATION</span></div><div class="paper-meta"><span>${esc(p.category)}</span><time datetime="${p.date.replaceAll('.','-')}">${esc(p.date)}</time></div><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p><button class="paper-more" data-paper="${esc(p.id)}">阅读观察 <span aria-hidden="true">↗</span></button></article>`).join('');
+  function renderPapers(filter = paperFilter) {
+    const papers = data.papers.filter(p => (filter === 'all' || p.filter === filter) && (!paperSearch || [p.title,p.category,p.stage,p.source,p.summary].join(' ').toLowerCase().includes(paperSearch)));
+    $('#paper-list').innerHTML = papers.length ? papers.map(p => `<article class="paper"><div class="paper-visual">${illustration(p.visual)}<span class="paper-visual-label">CONCEPTUAL ILLUSTRATION</span></div><div class="paper-meta"><span>${esc(p.category)}</span><time datetime="${p.date.replaceAll('.','-')}">${esc(p.date)}</time></div><h3><a href="insights/${esc(p.id)}/">${esc(p.title)}</a></h3><p>${esc(p.summary)}</p><div class="paper-stage">${esc(p.stage)}</div><a class="paper-more" href="insights/${esc(p.id)}/">阅读全文 <span aria-hidden="true">↗</span></a></article>`).join('') : '<p class="empty-state">暂无匹配条目。试试其他关键词或分类。</p>';
   }
   renderPapers();
   $$('[data-paper-filter]').forEach(button => button.addEventListener('click', () => {
+    paperFilter = button.dataset.paperFilter;
     $$('[data-paper-filter]').forEach(b => { b.classList.toggle('active', b === button); b.setAttribute('aria-pressed', String(b === button)); });
     renderPapers(button.dataset.paperFilter);
   }));
+  $('#paper-search')?.addEventListener('input', event => { paperSearch=event.target.value.trim().toLowerCase();renderPapers(); });
   $('#paper-list').addEventListener('click', e => {
     const button = e.target.closest('[data-paper]');
     if (!button) return;
@@ -153,6 +161,8 @@
   function openIntent(type) {
     if (type && ['research','technical','support','question'].includes(type)) form.elements.type.value = type;
     $('#form-feedback').textContent = '';
+    const topic = new URLSearchParams(location.search).get('topic');
+    if (topic && !form.elements.message.value) form.elements.message.value = `我希望讨论：${topic.slice(0,200)}\n\n已有工作或能力：\n希望共同推进的下一步：`;
     openDialog(intent);
   }
   $('#open-intent').addEventListener('click', () => openIntent());
@@ -243,4 +253,7 @@
     $$('main>section[id]').forEach(el => navObserver.observe(el));
   }
   $('#year').textContent = '2026';
+  if ($('#atlas-home-count')) $('#atlas-home-count').textContent = `${window.ATLAS_QUESTIONS.length} 个候选问题 · ${window.ATLAS_INSTITUTIONS.length} 个能力节点 · ${data.papers.length} 条外部研究 · 每题一项拟议首轮任务。`;
+  if ($('#service-list')) $('#service-list').innerHTML = window.ATLAS_RESEARCH.collaboration.map((s,i)=>`<article class="service-row"><span class="service-number">0${i+1}</span><div><span class="small-note">${esc(s.status)}</span><h3>${esc(s.title)}</h3><p>${esc(s.forWhom)}</p><details><summary>查看工作范围与交付 ↗</summary><div class="service-detail"><p><strong>带来什么：</strong>${esc(s.input)}</p><p><strong>共同开展：</strong>${esc(s.work)}</p><h4>拟交付内容</h4><ul>${s.deliverables.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p><strong>参与方收益：</strong>${esc(s.benefit)}</p><p class="small-note">${esc(s.boundary)}</p></div></details></div><button class="service-contact" data-service-topic="${esc(s.title)}" aria-label="讨论${esc(s.title)}">讨论需求 ↗</button></article>`).join('');
+  $('#service-list')?.addEventListener('click', event => { const button=event.target.closest('[data-service-topic]');if(button){openIntent('technical');if(!form.elements.message.value)form.elements.message.value=`希望讨论的合作方向：${button.dataset.serviceTopic}\n\n已有工作：\n需要解决的研发问题：\n希望取得的交付：`;} });
 })();
